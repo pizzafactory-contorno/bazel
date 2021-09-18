@@ -1,0 +1,15 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+USER root
+RUN apt-get update && \
+    apt-get install -y \
+      apt-transport-https curl gnupg \
+      repo git \
+      openjdk-11-jdk-headless python3 && \
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/bazel.gpg && \
+    echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" > /etc/apt/sources.list.d/bazel.list && \
+    apt-get update && apt-get install -y bazel && \
+    apt-get full-upgrade -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+USER user

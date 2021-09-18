@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eu
+
+if [ -z "${DOCKERFILE_PATH+UNDEF}" ]; then
+    DOCKERFILE_PATH_ARG=""
+else
+    DOCKERFILE_PATH_ARG="-f $DOCKERFILE_PATH"
+fi
+
+docker build --build-arg BASE_IMAGE=docker.io/pizzafactory0contorno/piatto:$DOCKER_TAG ${DOCKERFILE_PATH_ARG} -t $IMAGE_NAME .
+
