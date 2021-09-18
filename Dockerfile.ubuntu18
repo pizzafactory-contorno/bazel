@@ -4,7 +4,7 @@ FROM ${BASE_IMAGE}
 USER root
 RUN apt-get update && \
     apt-get install -y \
-      apt-transport-https curl gnupg \
+      apt-transport-https curl gnupg zip unzip \
       repo git \
       openjdk-11-jdk-headless python3 && \
     curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/bazel.gpg && \
