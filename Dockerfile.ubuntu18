@@ -4,9 +4,10 @@ FROM ${BASE_IMAGE}
 USER root
 RUN apt-get update && \
     apt-get install -y \
-      apt-transport-https curl gnupg zip unzip \
-      repo git \
+      apt-transport-https curl gnupg zip unzip git \
       openjdk-11-jdk-headless python3 && \
+    curl https://storage.googleapis.com/git-repo-downloads/repo | sed -e 's|env python|env python3|' > /usr/bin/repo && \
+    chmod a+x /usr/bin/repo && \
     curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/bazel.gpg && \
     echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" > /etc/apt/sources.list.d/bazel.list && \
     apt-get update && \
