@@ -5,7 +5,7 @@ USER root
 RUN apt-get update && \
     apt-get install -y \
       apt-transport-https curl gnupg zip unzip git \
-      openjdk-11-jdk-headless python3 && \
+      openjdk-11-jdk-headless python3 python3-pip python3-distutils && \
     curl https://storage.googleapis.com/git-repo-downloads/repo | sed -e 's|env python|env python3|' > /usr/bin/repo && \
     chmod a+x /usr/bin/repo && \
     curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/bazel.gpg && \
