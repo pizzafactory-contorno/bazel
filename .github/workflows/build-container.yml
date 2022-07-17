@@ -13,50 +13,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - tag: alpine
-            dockerfile: Dockerfile.alpine
-            baseImage: alpine:latest
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: alpine-3.15.0
-            dockerfile: Dockerfile.alpine
-            baseImage: alpine:3.15.0
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: alpine-3.10
-            dockerfile: Dockerfile.alpine
-            baseImage: alpine:3.10
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: alpine-edge
-            dockerfile: Dockerfile.alpine
-            baseImage: alpine:edge
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/riscv64, linux/s390x
-          - tag: debian-11.1
-            dockerfile: Dockerfile.debian
-            baseImage: debian:11.1-slim
-            platforms: linux/386, linux/amd64, linux/arm/v7, linux/arm64/v8, linux/mips64le, linux/ppc64le, linux/s390x
-          - tag: debian-10.1
-            dockerfile: Dockerfile.debian
-            baseImage: debian:10.1-slim
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: debian-10.2
-            dockerfile: Dockerfile.debian
-            baseImage: debian:10.2-slim
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: debian-9.11
-            dockerfile: Dockerfile.debian
-            baseImage: debian:9.11-slim
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: ubuntu-16.04
-            dockerfile: Dockerfile.debian
-            baseImage: ubuntu:16.04
-            platforms: linux/386, linux/amd64, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
           - tag: ubuntu-18.04
             dockerfile: Dockerfile.debian
             baseImage: ubuntu:18.04
-            platforms: linux/386, linux/amd64, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - tag: ubuntu-20.04
-            dockerfile: Dockerfile.debian
-            baseImage: ubuntu:20.04
-            platforms: linux/amd64, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/riscv64, linux/s390x
+            platforms: linux/amd64
     steps:
       -
         name: Checkout
