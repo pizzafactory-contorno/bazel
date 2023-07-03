@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - tag: ubuntu-18.04
-            dockerfile: Dockerfile.debian
-            baseImage: ubuntu:18.04
-            platforms: linux/amd64
+        bazelisk_version:
+          - "1.17.0" 
+        tag:
+          - "18.04"
+          - "20.04"
     steps:
       -
         name: Checkout
@@ -34,23 +34,27 @@ jobs:
         with:
           images: pizzafactory0contorno/piatto
           tags: |
-            ${{ matrix.tag }}
-            ${{ matrix.tag }}-{{sha}}
+            ${{ matrix.bazelisk_version }}-ubuntu${{ matrix.tag }}
+            ${{ matrix.bazelisk_version }}-ubuntu${{ matrix.tag }}-{{sha}}
+            ubuntu-${{ matrix.tag }}
+            ubuntu-${{ matrix.tag }}-{{sha}}
 
       -
         name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          platforms: ${{ matrix.platforms }}
-          file: ${{ matrix.dockerfile }}
-          build-args: BASE_IMAGE=${{ matrix.baseImage }}
+          platforms: linux/amd64,linux/arm64
+          file: Dockerfile.debian
+          build-args: |
+            BASE_IMAGE=pizzafactory0contorno/piatto:ubuntu-${{ matrix.tag }}
+            BAZELISK_VERSION=${{ matrix.bazelisk_version }}
           push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
