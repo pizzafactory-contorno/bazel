@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: pizzafactory0contorno/piatto
+          images: pizzafactory0contorno/bazel
           tags: |
             ${{ matrix.bazelisk_version }}-ubuntu${{ matrix.tag }}
             ${{ matrix.bazelisk_version }}-ubuntu${{ matrix.tag }}-{{sha}}
