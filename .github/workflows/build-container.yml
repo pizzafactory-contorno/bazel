@@ -51,10 +51,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           platforms: linux/amd64,linux/arm64
-          file: Dockerfile.debian
-          build-args: |
-            BASE_IMAGE=pizzafactory0contorno/piatto:ubuntu-${{ matrix.tag }}
-            BAZELISK_VERSION=${{ matrix.bazelisk_version }}
+          file: ubuntu-${{ matrix.tag }}/Dockerfile.debian
+          build-args: BAZELISK_VERSION=${{ matrix.bazelisk_version }}
           push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
