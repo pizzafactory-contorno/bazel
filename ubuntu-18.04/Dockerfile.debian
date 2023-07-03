@@ -1,5 +1,4 @@
-ARG BASE_IMAGE
-FROM ${BASE_IMAGE}
+FROM pizzafactory0contorno/piatto:18.04-ubunutu@sha256:576cb67f66537144db1117090150904d9ee14c50b2450733da5d905eb2b2c7f5
 
 USER root
 RUN apt-get update \
