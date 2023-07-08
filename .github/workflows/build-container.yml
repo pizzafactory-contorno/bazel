@@ -52,7 +52,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           platforms: linux/amd64,linux/arm64
-          file: ubuntu-${{ matrix.tag }}/Dockerfile.debian
+          file: ubuntu-${{ matrix.tag }}/Dockerfile
           build-args: BAZELISK_VERSION=${{ matrix.bazelisk_version }}
           push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.meta.outputs.tags }}
