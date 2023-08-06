@@ -1,4 +1,4 @@
-FROM pizzafactory0contorno/piatto:18.04-ubunutu@sha256:576cb67f66537144db1117090150904d9ee14c50b2450733da5d905eb2b2c7f5
+FROM pizzafactory0contorno/piatto:18.04-ubunutu@sha256:c8c3e15c0d98952f90ce02df17820a4453653a3c3763402d48dfb78ca682fd25
 
 USER root
 RUN apt-get update \
