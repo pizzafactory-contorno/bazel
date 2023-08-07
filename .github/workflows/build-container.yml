@@ -8,6 +8,21 @@ on:
       - 'main'
 
 jobs:
+  results:
+    # This job was inspired by https://github.com/orgs/community/discussions/26822#discussioncomment-5122101
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    name: Final Results
+    needs: [docker]
+    steps:
+      - run: exit 1
+        # see https://stackoverflow.com/a/67532120/4907315
+        if: >-
+          ${{
+               contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+          }}
+
   docker:
     runs-on: ubuntu-latest
     strategy:
