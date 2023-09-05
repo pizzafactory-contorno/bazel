@@ -8,13 +8,13 @@
       "enabled": false
     }
   ],
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "enabledManagers": [
     "dockerfile"
   ],
 
   "schedule": [
-    "every 6 hour after 00:00 and before 23:59 every day"
+    "every 6 hour after 00:00 and before 23:59"
   ],
   "automergeSchedule": [
     "every 6 hour after 00:00 and before 23:59 every day"
