@@ -1,4 +1,4 @@
-FROM pizzafactory0contorno/piatto:22.04-ubuntu@sha256:c8d9214a87f48acfb2b18f6f753f1b31ea05cbb3f5c783f83930930a25b31f2a
+FROM pizzafactory0contorno/piatto:22.04-ubuntu@sha256:b6c6ea1c89e8828e5d4801c4208dfcec6abc7bf9980c6a4271446046135031ef
 
 USER root
 RUN apt-get update \
