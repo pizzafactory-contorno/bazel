@@ -3,18 +3,15 @@
   "baseBranches": ["main"],
   "packageRules": [
     {
+      "matchManagers": ["dockerfile"],
       "matchUpdateTypes": ["major", "minor", "patch"],
       "matchBaseBranches": ["main"],
       "enabled": false
     }
   ],
+  "automerge": true,
+  "platformAutomerge": true,
+  "dependencyDashboard": false,
   "extends": ["config:recommended"],
-  "enabledManagers": [ "dockerfile", "github-actions"],
-
-  "schedule": [
-    "every 6 hour after 00:00 and before 23:59"
-  ],
-  "automergeSchedule": [
-    "every 6 hour after 00:00 and before 23:59 every day"
-  ]
+  "enabledManagers": ["github-actions","dockerfile"]
 }
