@@ -12,6 +12,6 @@
   "automerge": true,
   "platformAutomerge": true,
   "dependencyDashboard": false,
-  "extends": ["config:recommended"],
+  "extends": ["config:recommended",":rebaseStalePrs"],
   "enabledManagers": ["github-actions","dockerfile"]
 }
