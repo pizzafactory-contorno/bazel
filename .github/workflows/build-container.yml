@@ -34,6 +34,8 @@ jobs:
           - "20.04"
           - "22.04"
     steps:
+      - id: repository
+        run: echo "name=${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}" >> $GITHUB_OUTPUT
       -
         name: Checkout
         uses: actions/checkout@v4
@@ -48,7 +50,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: pizzafactory0contorno/bazel
+          images: pizzafactory0contorno/${{ steps.repository.outputs.name }}
           tags: |
             ${{ matrix.bazelisk_version }}-ubuntu${{ matrix.tag }}
             ${{ matrix.bazelisk_version }}-ubuntu${{ matrix.tag }}-{{sha}}
