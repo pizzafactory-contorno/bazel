@@ -1,4 +1,4 @@
-FROM pizzafactory0contorno/piatto:20.04-ubuntu@sha256:2b305c8c531cc34d8ee8d6b9effdc9f27ebd6c899df53850384ad699c22813b1 as artifact
+FROM pizzafactory0contorno/piatto:20.04-ubuntu@sha256:3d7c4cdefc5c960fe42b72a1a6e1fa0e6d55a4b1b3ef073c195c3762ce4db95e as artifact
 
 ARG BAZELISK_VERSION
 ARG TARGETPLATFORM
